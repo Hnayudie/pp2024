@@ -12,6 +12,7 @@ def input_course_info():
     for i in range (number_course):
         course_name = input(f"Enter Course's Name {i+1}: ")
         course_id = input(f"Enter Course's ID {i+1}: ")
+        blahblah
         
         
     
