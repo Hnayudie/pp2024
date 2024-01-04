@@ -38,5 +38,7 @@ def main():
         course_name = input("Enter Course Name: ")
         course_id = int(input("Enter Course ID: "))
         courses.append({'name': course_name, 'id': course_id})
+        blahblahS
+        
         
         
