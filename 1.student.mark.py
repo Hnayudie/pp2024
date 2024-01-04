@@ -1,27 +1,18 @@
-def input_student_info ():
-    num_students = int(input("Enter the number of student: "))
-    students=[]
-    for i in range (num_students) :
-        student_name = input(f"Enter Student's Name {i+1}: ")
-        student_id = input(f"Enter Student's ID {i+1}: ")
-        student_dob = input(f"Enter Student DOB {i+1}: ")
-        student.append(student_name, student_id, student_dob)
-    return students
-        
-def input_course_info():
-    num_courses = int(input("Enter the number of "))
-    courses=[]
-    for i in range (num_courses):
-        course_name = input(f"Enter Course's Name {i+1}: ")
-        course_id = input(f"Enter Course's ID {i+1}: ")
-        course.append(course_name, course_id)
-    return courses
-        
-def input_student_mark():
-    mark=[]
-    
-        
-        
-    
-    
-    
+def get_student_marks(students, course_id):
+    for student in students:
+        print(f"{student['name']}: {student['marks'][course_id]}")
+
+def input_student_marks(students, courses):
+    for student in students:
+        print(f"Enter marks for {student['name']}:")
+        for course in courses:
+            mark = float(input(f"Enter mark for course {course['name']}: "))
+            student['marks'][course['id']] = mark
+
+def list_students(students):
+    for student in students:
+        print(f"ID: {student['id']}, Name: {student['name']}, DoB: {student['dob']}")
+
+def list_courses(courses):
+    for course in courses:
+        print(f"ID: {course['id']}, Name: {course['name']}")
