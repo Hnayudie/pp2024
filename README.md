@@ -9,6 +9,6 @@ Students are expected to:
 Student Info
 =========================
 
-* Student Name: LA DUY ANH
+* Student Name: La Duy Anh
 * Student ID: 22BI13016
 
