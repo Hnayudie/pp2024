@@ -23,7 +23,7 @@ def input_number_of_student():
 
 def input_student_info(x):
     while True:
-        student_id = input(f"Student ID {x + 1}: ")
+        student_id = input(f"Enter Student ID {x + 1}: ")
         if student_id.isalnum():
             break
         else:
@@ -46,4 +46,13 @@ def input_number_of_course():
     return number_of_courses
 
 def input_course_info(x):
+    while True:
+        course_id = input(f"Enter Course ID {x + 1}: ")
+        if course_id.isalnum():
+            break
+        else:
+            print("Invalid Course ID. Try again.")
+        
+    
+    
     
