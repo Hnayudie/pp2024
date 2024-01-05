@@ -31,7 +31,7 @@ def input_student_info(x):
 
     student_name = input(f"Enter Student Name {x + 1}: ")
     student_dob = input(f"Enter Student DOB {x + 1} (dd/mm/yyyy): ")
-    temp1 = {'name': student_name, 'id': student_id, 'dob': student_dob}
+    temp1 = {'student_name': student_name, 'student_id': student_id, 'student_dob': student_dob}
     classroom.append(temp1)
 
         
@@ -53,6 +53,35 @@ def input_course_info(x):
         else:
             print("Invalid Course ID. Try again.")
         
+    course_name = input(f"Enter Course Name {x + 1}: ")
+    temp2 = {'course_name': course_name, 'id': course_id}
+    course.append(temp2)
     
-    
-    
+def input_mark():
+    mark = [[0 for _ in range(number_of_student)] for _ in range(number_of_course)]
+    while True:
+        while True:
+            message = int(input("Input 1 to continue or 0 to quit: "))
+            if message == 1:
+                temp_student_name = str(input("Choose a student: "))
+                temp_course_name = str(input("Choose a course:  "))
+                count1, count2 = 0, 0 
+                for x in range(number_of_course):
+                    if temp_course_name == course[x]['course_name']:
+                        count1 += 1
+                        a = x
+                for x in range(number_of_student):
+                    if temp_student_name == classroom[x]['student_name']:
+                        count2 += 2
+                        b = x
+                        
+                if count1 == 0 or count2 == 0:
+                    print("Invalid course's name or student's name. Try again.")
+                else:
+                    mark[b][a] = input(f"Enter mark of {classroom[b]['student_name']} in {course[a]['course_name']}: ")
+            elif message == 0:
+                return mark
+            else:
+                print("Invalid Input. Try Again")
+
+# Display function    
