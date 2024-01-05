@@ -1,44 +1,49 @@
-def get_student_marks(students, course_id):
-    for student in students:
-        print(f"{student['name']}: {student['marks'][course_id]}")
+# Global variables
+mark_table = [] 
+classroom = []
+number_of_student = 0
+id_student = 45
+student_name = ""
+Dob = ""
+course = []
+number_of_course = 0
+id_course = 45
+course_name = ""
 
-def input_student_marks(students, courses):
-    for student in students:
-        print(f"Enter marks for {student['name']}:")
-        for course in courses:
-            mark = float(input(f"Enter mark for course {course['name']}: "))
-            student['marks'][course['id']] = mark
+# Input functions
+def input_number_of_student():
+    number_of_student = int(input("Enter the number of student (maximum 450): "))
+    while True:
+        if 0 < number_of_student < 450:
+            break
+        else:
+            print("Why so many? Kill some and comeback later")
+            number_of_student = int(input("Enter the number of student (maximum 450): "))
+    return number_of_student
 
-def list_students(students):
-    for student in students:
-        print(f"ID: {student['id']}, Name: {student['name']}, DoB: {student['dob']}")
+def input_student_info(x):
+    while True:
+        student_id = input(f"Student ID {x + 1}: ")
+        if student_id.isalnum():
+            break
+        else:
+            print("Invalid Student ID. Try again.")
 
-def list_courses(courses):
-    for course in courses:
-        print(f"ID: {course['id']}, Name: {course['name']}")
+    student_name = input(f"Enter Student Name {x + 1}: ")
+    student_dob = input(f"Enter Student DOB {x + 1} (dd/mm/yyyy): ")
+    temp1 = {'name': student_name, 'id': student_id, 'dob': student_dob}
+    classroom.append(temp1)
+
         
-def main():
-    # Input function: 
-    num_students = int(input("Enter number of students: "))
-    num_courses = int(input("Enter number of courses: "))
+def input_number_of_course():
+    number_of_courses = int(input(f"Enter number of courses (maximum 50): "))
+    while True:
+        if 0 < number_of_courses < 50:
+            break
+        else:
+            print("U are too studious. Try again.")
+            number_of_courses = int(input(f"Enter number of Courses: "))
+    return number_of_courses
+
+def input_course_info(x):
     
-    # Students and courses List
-    students = []
-    courses = []
-    
-    # Input Students and Courses info
-    for _ in range(num_students):
-        student_name = input("Enter Student Name: ")
-        student_id = int(input("Enter Student ID: "))
-        student_dob = input("Enter Student DOB: ")
-        marks = {course['id']: None for course in courses}
-        students.append({'name': student_name, 'id': student_id, 'dob': student_dob})
-        
-    for _ in range(num_courses):
-        course_name = input("Enter Course Name: ")
-        course_id = int(input("Enter Course ID: "))
-        courses.append({'name': course_name, 'id': course_id})
-        blahblahS
-        
-        
-        
