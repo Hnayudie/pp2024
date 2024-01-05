@@ -85,3 +85,59 @@ def input_mark():
                 print("Invalid Input. Try Again")
 
 # Display function    
+def course_list():
+    banner_course = f"There are {number_of_courses} course(s) include: "
+    for x in range(number_of_courses):
+        banner_course += course[x]['course_name'] + ", "
+    banner_course = banner_course[:-2]
+    print(banner_course)
+    
+def student_list():
+    banner_student = f"There are {number_of_student} student(s) include: "
+    for x in range(number_of_student):
+        banner_student += classroom[x]['student_name'] + ", "
+        banner_student = banner_student[:-2] 
+        print(banner_student)
+        
+def mark_display(mark_table):
+    while True:
+        course_to_choose = str(input("Choose a course: "))
+        course_chosen = 0
+        for x in range(number_of_course):
+            if course_to_choose == course[x]['course_name']:
+                course_chosen += 1
+                c = x
+        if course_chosen == 0:
+            print("Course not found, please try again.")
+        else:
+            banner_mark = "List of Mark: "
+            for x in range(number_of_student):
+                banner_mark += f"{classroom[x]['student name']} is {mark_table[c][x]}, "
+            banner_mark = banner_mark[:-2]
+            print(banner_mark)
+        
+        choice = input("Enter 1 to view another course or 0 to exit: ")
+        if choice == '1':
+            continue
+        elif choice == '0':
+            break
+        else:
+            print("Invalid choice. Please Enter 1 or 0.")
+            
+# Main function
+def main():
+    number_of_student = input_number_of_student()
+    for x in range(number_of_student):
+        input_student_info(x)
+        
+    number_of_course = input_number_of_course()
+    for x in range(number_of_course):
+        input_course_info(x)
+        
+    mark_table = input_mark()
+    course_list()
+    student_list()
+    mark_display(mark_table)
+    
+        
+        
