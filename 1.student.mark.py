@@ -138,6 +138,3 @@ def main():
     course_list()
     student_list()
     mark_display(mark_table)
-    
-        
-        
