@@ -12,56 +12,51 @@ course_name = ""
 
 # Input functions
 def input_number_of_student():
-    number_of_student = int(input("Enter the number of student (maximum 450): "))
+    global number_of_student
+    number_of_student = int(input("Enter the number of students (maximum 450): "))
     while True:
         if 0 < number_of_student < 450:
             break
         else:
-            print("Why so many? Kill some and comeback later")
-            number_of_student = int(input("Enter the number of student (maximum 450): "))
-    return number_of_student
+            print("Why so many? Kill some and come back later")
+            number_of_student = int(input("Enter the number of students (maximum 450): "))
 
 def input_student_info(x):
-    while True:
+    student_id = input(f"Enter Student ID {x + 1}: ")
+    while not student_id.isalnum():
+        print("Invalid Student ID. Try again.")
         student_id = input(f"Enter Student ID {x + 1}: ")
-        if student_id.isalnum():
-            break
-        else:
-            print("Invalid Student ID. Try again.")
 
     student_name = input(f"Enter Student Name {x + 1}: ")
     student_dob = input(f"Enter Student DOB {x + 1} (dd/mm/yyyy): ")
     temp1 = {'student_name': student_name, 'student_id': student_id, 'student_dob': student_dob}
     classroom.append(temp1)
 
-        
 def input_number_of_course():
-    number_of_courses = int(input(f"Enter number of courses (maximum 50): "))
+    global number_of_course
+    number_of_course = int(input(f"Enter number of courses (maximum 50): "))
     while True:
-        if 0 < number_of_courses < 50:
+        if 0 < number_of_course < 50:
             break
         else:
-            print("U are too studious. Try again.")
-            number_of_courses = int(input(f"Enter number of Courses: "))
-    return number_of_courses
+            print("You are too studious. Try again.")
+            number_of_course = int(input(f"Enter number of Courses: "))
 
 def input_course_info(x):
-    while True:
+    course_id = input(f"Enter Course ID {x + 1}: ")
+    while not course_id.isalnum():
+        print("Invalid Course ID. Try again.")
         course_id = input(f"Enter Course ID {x + 1}: ")
-        if course_id.isalnum():
-            break
-        else:
-            print("Invalid Course ID. Try again.")
-        
+
     course_name = input(f"Enter Course Name {x + 1}: ")
     temp2 = {'course_name': course_name, 'id': course_id}
     course.append(temp2)
-    
+
 def input_mark():
     mark = [[0 for _ in range(number_of_student)] for _ in range(number_of_course)]
     while True:
         while True:
-            message = int(input("Input 1 to continue or 0 to quit: "))
+            message = int(input("Input 1 to continue input or 0 to review marks : "))
             if message == 1:
                 temp_student_name = str(input("Choose a student: "))
                 temp_course_name = str(input("Choose a course:  "))
@@ -86,8 +81,8 @@ def input_mark():
 
 # Display function    
 def course_list():
-    banner_course = f"There are {number_of_courses} course(s) include: "
-    for x in range(number_of_courses):
+    banner_course = f"There are {number_of_course} course(s) include: "
+    for x in range(number_of_course):
         banner_course += course[x]['course_name'] + ", "
     banner_course = banner_course[:-2]
     print(banner_course)
@@ -110,9 +105,9 @@ def mark_display(mark_table):
         if course_chosen == 0:
             print("Course not found, please try again.")
         else:
-            banner_mark = "List of Mark: "
+            banner_mark = "List of Marks: "
             for x in range(number_of_student):
-                banner_mark += f"{classroom[x]['student name']} is {mark_table[c][x]}, "
+                banner_mark += f"{classroom[x]['student_name']} has {mark_table[c][x]}, "
             banner_mark = banner_mark[:-2]
             print(banner_mark)
         
@@ -123,14 +118,14 @@ def mark_display(mark_table):
             break
         else:
             print("Invalid choice. Please Enter 1 or 0.")
-            
+
 # Main function
 def main():
-    number_of_student = input_number_of_student()
+    input_number_of_student()
     for x in range(number_of_student):
         input_student_info(x)
         
-    number_of_course = input_number_of_course()
+    input_number_of_course()
     for x in range(number_of_course):
         input_course_info(x)
         
@@ -138,3 +133,6 @@ def main():
     course_list()
     student_list()
     mark_display(mark_table)
+
+if __name__ == "__main__":
+    main()
