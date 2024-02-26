@@ -51,6 +51,49 @@ def display_marks(self):
             choice = input("Enter 1 to view another course or 0 to exit: ")
             if choice != '1':
                 break
-                    
-            
-        
+
+def display_course(self):
+    banner_course = f"There are {len(self.courses)} course(s) include: "
+    for course in self.course:
+        banner_course += course.course_name + ", "
+    banner_course = banner_course[:-2]
+    print(banner_course)
+    
+def display_students(self):
+    banner_student = f"There are {len(self.classroom)} student(s) include: "
+    for student in self.classroom:
+        banner_student += student.student_name + ", "
+    banner_student = banner_student[:-2]
+    print(banner_student)
+    
+def find_student_index(self, student_name):
+    for student in self.classroom:
+        if student_name == student.student_name:
+            return self.classroom.index(student)
+    return None
+
+def find_course_index(self, course_name):
+    for course in self.courses:
+        if course_name == course.course_name:
+            return self.courses.index(course)
+    return None
+
+def input_students(num_students):
+    classroom = []
+    for i in range(num_students):
+        student_id = input(f"Enter Student ID {i + 1}: ")
+        student_name = input(f"Enter Student Name {i + 1}: ")
+        student_dob = input(f"Enter Student DOB {i + 1}: ")
+        student = Student(student_id, student_name, student_dob)
+        classroom.append(student)
+    return classroom
+  
+def input_courses(num_courses):
+    courses = []  
+    for i in range(num_courses):
+        course_id = input(f"Enter Course ID {i + 1}: ") 
+        course_name = input (f"Enter Course Name {i + 1}: ")   
+        course = Course(course_id, course_name)
+        courses.append(course)
+    return courses
+
