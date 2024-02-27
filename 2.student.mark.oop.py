@@ -97,3 +97,18 @@ def input_courses(num_courses):
         courses.append(course)
     return courses
 
+def main():
+    num_students = int(input("Enter the number of students (maximun 450): "))
+    classroom = input_students(num_students)
+    
+    num_courses = int(input("Enter number of courses (maximum 50): "))
+    courses = input_courses(num_courses)
+    
+    mark_sheet = MarkSheet(classroom, courses)
+    mark_sheet.input_mark()
+    mark_sheet.display_courses()
+    mark_sheet.display_students()
+    mark_sheet.display_marks()
+    
+if  __name__=="__main__":
+    main()
