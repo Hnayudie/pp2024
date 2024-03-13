@@ -106,6 +106,29 @@ class MarkSheet:
         gpa = weighted_sum / total_credit
         print(f"The GPA of {student_name} is: {gpa:.2f}")
 
+    def sort_students_by_gpa(self):
+        student_gpas = []
+
+        for student in self.students:
+            student_index = self.find_student_index(student.name)
+            total_credit = 0
+            weighted_sum = 0
+
+            for i, mark in enumerate(self.marks[student_index]):
+                if mark != 0:
+                    course_credit = self.courses[i].credit
+                    total_credit += course_credit
+                    weighted_sum += mark * course_credit
+
+            if total_credit != 0:
+                gpa = weighted_sum / total_credit
+                student_gpas.append((student.name, gpa))
+
+        sorted_student_gpas = sorted(student_gpas, key=lambda x: x[1], reverse=True)
+
+        print("Sorted Students by GPA:")
+        for name, gpa in sorted_student_gpas:
+            print(f"{name}: {gpa:.2f}")
 
 def input_students(num_students):
     students = []
@@ -143,6 +166,8 @@ def main():
 
     student_name = input("Enter student name to calculate GPA: ")
     mark_sheet.calculate_gpa(student_name)
+
+    mark_sheet.sort_students_by_gpa()
 
 
 if __name__ == "__main__":
