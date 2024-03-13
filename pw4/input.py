@@ -1,3 +1,6 @@
+from domains.student import Student
+from domains.course import Course
+
 def input_students(num_students):
     students = []
     for i in range(num_students):
