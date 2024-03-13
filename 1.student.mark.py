@@ -60,6 +60,8 @@ def input_mark():
             if message == 1:
                 temp_student_name = str(input("Choose a student: "))
                 temp_course_name = str(input("Choose a course:  "))
+                
+                # Check if the course and student names are valid
                 count1, count2 = 0, 0 
                 for x in range(number_of_course):
                     if temp_course_name == course[x]['course_name']:
@@ -67,13 +69,13 @@ def input_mark():
                         a = x
                 for x in range(number_of_student):
                     if temp_student_name == classroom[x]['student_name']:
-                        count2 += 2
+                        count2 += 1
                         b = x
                         
                 if count1 == 0 or count2 == 0:
                     print("Invalid course's name or student's name. Try again.")
                 else:
-                    mark[b][a] = input(f"Enter mark of {classroom[b]['student_name']} in {course[a]['course_name']}: ")
+                    mark[a][b] = input(f"Enter mark of {classroom[b]['student_name']} in {course[a]['course_name']}: ")
             elif message == 0:
                 return mark
             else:
