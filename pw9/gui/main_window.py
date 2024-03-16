@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from persistence import PersistenceManager
+from gui.persistence_manager import PersistenceManager
 from domains.student import Student
 from domains.course import Course
 from domains.marksheet import MarkSheet
