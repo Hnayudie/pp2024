@@ -12,7 +12,7 @@ def main():
     courses = input_courses(num_courses)
 
     mark_sheet = MarkSheet(students, courses)
-    mark_sheet.input_mark()  # Corrected method name
+    mark_sheet.input_mark()  
 
     display_courses(courses)
     display_students(students)
